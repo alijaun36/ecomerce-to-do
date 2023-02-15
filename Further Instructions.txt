@@ -1,0 +1,18 @@
+1. install react-router-bootstrap react-router-dom
+
+import {BrowserRouter as Router, Route} from 
+move to app.js replace <> with <Router>
+replacec <HomeScreen /> with <Route path='/' element={<HomeScreen />} exact />
+<Route path='/product/:id' element={<ProductScreen />} />
+
+
+in the screens folder, create file ProductScreen
+
+
+now move to Product.js and import Link from react-router-dom and replace 'a' tag with 'link' and 'href' with 'to'
+
+now in Header.js
+import {LinkContainer} from 'react-router-bootstrap'
+wrap <Navbar.Brand href="/">Preshop</Navbar.Brand> with <LinkContainer to='/'></LinkContainer>
+
+Now make another file ProductScreen.js
