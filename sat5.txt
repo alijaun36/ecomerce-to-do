@@ -1,0 +1,73 @@
+in package.json, under scripts
+write
+"server": "nodemon backend/server",
+"client": "npm start \*npm run server\* \*npm run client\*"
+
+then do
+npm i dotenv
+
+then do
+npm i nodemon concurrently -D <= here -D will install applications in dev dependencies
+
+after that do 
+
+
+replacec all 'require' to 'import' keyword in server files.
+import dotenv from 'dotenv'
+dotenv.config() <= this will make dotenv to be available in the whole project.
+
+now create .env file and write
+NODE_ENV = development
+PORT = 5000
+
+
+now go to code remove few things from ratings.
+
+
+
+
+now npm i colors mongoose <- in ecommerce app
+
+
+create a folder 'config'
+create a file in it 'db.js'
+write below code in that file.
+
+import mongoose from 'mongoose'
+
+const connectDB = async () => {
+	try  {
+		const conn = await mongoose.connect(process.env.MONGO_URI, {
+		useUnifiedTopology = true,
+		useNewUrlParser = true,
+})
+
+console.log(`MongoDB Connected: ${error.message}`.cyan.underline)
+} catch (error) {
+	console.log(`Error: ${error.message}`.red.underline.bold )
+	process.exit(1)
+}
+}
+
+export default connectDB
+
+
+signup mongoose atlas and create cluster and user in it.
+in the .env create a variable MONGOO_URI and add the string which you copied.
+
+
+now move to server.js and write
+import colors from 'colors';
+import connectDB from './config/db.js'
+
+
+now below write 
+connectDB()
+
+now update a line in app.listen( PORT, console.log( `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`).yellow.bold;
+)
+
+
+
+
+HomeWork: read database connection, 
